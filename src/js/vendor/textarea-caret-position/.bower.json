@@ -1,0 +1,15 @@
+{
+  "name": "textarea-caret-position",
+  "homepage": "https://github.com/component/textarea-caret-position",
+  "version": "3.0.0",
+  "_release": "3.0.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "3.0.0",
+    "commit": "eba40ec8488eed4d77815f109af22e1d9c0751d3"
+  },
+  "_source": "git://github.com/component/textarea-caret-position.git",
+  "_target": "~3.0.0",
+  "_originalSource": "textarea-caret-position",
+  "_direct": true
+}
