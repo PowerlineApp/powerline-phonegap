@@ -9,7 +9,8 @@ angular.module('app', [
   'ngAnimate',
   'JsCollection',
   'pasvaz.bindonce',
-  'google-maps'.ns()
+  'google-maps'.ns(),
+  'angular-cache'
 ]).config(function ($routeProvider, $locationProvider, $httpProvider) {
 
   $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -251,4 +252,6 @@ angular.module('app', [
     v: '3.18',
     libraries: 'places'
   });
-}]);
+}]).config(function (CacheFactoryProvider) {
+    angular.extend(CacheFactoryProvider.defaults, { maxAge: 15 * 60 * 1000 });
+});
