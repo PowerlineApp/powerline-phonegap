@@ -147,6 +147,7 @@ var builders = {
 
             var builder = this;
             var args = this.getArgs(build_type == 'debug' ? 'debug' : 'release');
+            return; //commented by alex
             return check_reqs.check_ant()
             .then(function() {
                 return spawn('ant', args);

@@ -153,10 +153,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"PushPlugin\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
                         },
@@ -243,9 +239,6 @@
             "PACKAGE_NAME": "ne.powerli"
         },
         "org.apache.cordova.dialogs": {
-            "PACKAGE_NAME": "ne.powerli"
-        },
-        "com.phonegap.plugins.PushPlugin": {
             "PACKAGE_NAME": "ne.powerli"
         },
         "org.apache.cordova.device": {
