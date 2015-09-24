@@ -17,7 +17,8 @@
     "angular-google-maps": "~2.0.6",
     "Autolinker.js": "~0.15.2",
     "angular-bindonce": "~0.3.3",
-    "textarea-caret-position": "~3.0.0"
+    "textarea-caret-position": "~3.0.0",
+    "angular-cache": "~4.3.2"
   },
   "devDependencies": {
     "angular-mocks": "1.2.25",

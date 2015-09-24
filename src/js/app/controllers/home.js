@@ -32,7 +32,10 @@ angular.module('app.controllers').controller('home', function ($scope, topBar, s
   function getActivities() {
     $scope.activities = homeCtrlParams.filter.selectedGroup ? homeCtrlParams.filter.selectedGroup.activities
       : activities.getFilteredModels();
+
   }
+
+  setInterval(function(){ getActivities(); activity.load().then(prepare, prepare); }, 5000);
 
   function getUnansweredCount(activities) {
     return _(activities).reduce(function (memo, activity) {

@@ -210,9 +210,43 @@ angular.module('app.services').factory('activity',
     };
 
     function load() {
-      return $http.get(serverConfig.url + '/api/activities/').then(function (response) {
-        return activities.add(response.data);
+      if(!iStorage.get(ACTIVITIES_CACHE_ID)){
+        //console.log(1);
+        return $http.get(serverConfig.url + '/api/activities/').then(function (response) {
+          return activities.add(response.data);
+        });
+
+      }else{
+        //console.log(2);
+        $http.get(serverConfig.url + '/api/activities/').then(function (response) {
+
+          if(arrayDiff(response.data,iStorage.get(ACTIVITIES_CACHE_ID))){
+            
+            iStorage.set(ACTIVITIES_CACHE_ID,null);
+          }
+        });
+
+        return activities.add(iStorage.get(ACTIVITIES_CACHE_ID));
+      }
+      
+    }
+
+    function arrayDiff(a1,a2){
+
+      var a3 = [];
+      var a4 = [];
+
+      _.each(a1,function(v){
+        a3.push(v.id);
       });
+
+      _.each(a2,function(v){
+        a4.push(v.id);
+      });
+
+      var a5 = _.difference(a3,a4);
+      //console.log(a5);
+      return a5.length;
     }
 
     return {
