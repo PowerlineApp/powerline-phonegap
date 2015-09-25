@@ -195,6 +195,10 @@
                         {
                             "xml": "<feature name=\"SocialSharing\"><param name=\"ios-package\" value=\"SocialSharing\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushPlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -263,6 +267,9 @@
             "PACKAGE_NAME": "ne.powerli"
         },
         "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "ne.powerli"
+        },
+        "phonegap-plugin-push": {
             "PACKAGE_NAME": "ne.powerli"
         }
     },
