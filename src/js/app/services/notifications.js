@@ -194,7 +194,6 @@ angular.module('app.services').factory('notifications', function ($window, devic
           });
 
           scope.$watch('token', function (newValue, oldValue) {
-            alert('watch===='+scope.token);
             if (session.getToken() && newValue && newValue !== oldValue) {
               registerIOS();
             }
