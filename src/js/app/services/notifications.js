@@ -9,11 +9,13 @@ angular.module('app.services').factory('notifications', function ($window, devic
       "ios": {"alert": "true", "badge": "true", "sound": "true"}
     });
     push.on('registration', function(data) {
-      if(device.isAndroid){
-        notificationsData.regId = data.registrationId;
-      }else{
-        notificationsData.token = data.registrationId;
-      }
+      notificationsData.$apply(function(){
+        if(device.isAndroid){
+          notificationsData.regId = data.registrationId;
+        }else{
+          notificationsData.token = data.registrationId;
+        }
+      })
     });
     
     push.on('notification', function(data) {
@@ -192,6 +194,7 @@ angular.module('app.services').factory('notifications', function ($window, devic
           });
 
           scope.$watch('token', function (newValue, oldValue) {
+            alert('watch===='+scope.token);
             if (session.getToken() && newValue && newValue !== oldValue) {
               registerIOS();
             }
@@ -211,10 +214,6 @@ angular.module('app.services').factory('notifications', function ($window, devic
               scope.pushPlugin.setApplicationIconBadgeNumber(angular.noop, newValue.length);
             }
           });
-
-          scope.registerIOS = function (token) {
-            scope.token = token;
-          };
 
           function getEndpoints() {
             return $http.get(serverConfig.url + '/api/endpoints/').then(function (response) {
