@@ -5,7 +5,7 @@ angular.module('app.services').factory('notifications', function ($window, devic
 
   function register() {
     var push = notificationsData.pushPlugin.init({
-      "android": {"senderID": serverConfig.senderID},
+      "android": {"senderID": serverConfig.senderID, "icon": "notification_icon"},
       "ios": {"alert": "true", "badge": "true", "sound": "true"}
     });
     push.on('registration', function(data) {
