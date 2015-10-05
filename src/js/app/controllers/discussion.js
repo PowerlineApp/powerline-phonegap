@@ -27,7 +27,24 @@ angular.module('app.controllers').controller('discussion',function ($scope, topB
 
   $scope.$watch(getComment, function (newValue) {
     $scope.comment = newValue;
+
+    if(window.refreshComments){
+      clearInterval(refreshComments);
+    }
+
+    window.refreshComments = setInterval(function(){ 
+      
+      loadComments();
+      $scope.comment = getComment();
+      $scope.$watch(getComment, function (newValue) {
+        $scope.comment = newValue;
+        console.log(window.refreshComments,$scope.comment);
+      });
+    }, 10000);
+
   });
+
+  
 
   $scope.$watch('view.commentToShare', function (comment) {
     if (comment) {
@@ -83,7 +100,7 @@ angular.module('app.controllers').controller('discussion',function ($scope, topB
   };
 
   function loadComments() {
-    $scope.loading = true;
+    //$scope.loading = true;
     discussion.loadTree($scope.entity, $scope.id).then(function (data) {
       $scope.loaded();
       cache.put($scope.id, data);

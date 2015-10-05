@@ -32,7 +32,23 @@ angular.module('app.controllers').controller('home', function ($scope, topBar, s
   function getActivities() {
     $scope.activities = homeCtrlParams.filter.selectedGroup ? homeCtrlParams.filter.selectedGroup.activities
       : activities.getFilteredModels();
+
   }
+
+  $scope.$watch($scope.activities,function(){
+    
+    if(window.refreshMain){
+      clearInterval(refreshMain);
+    }
+    
+    window.refreshMain = setInterval(function(){ 
+      if(window.location.hash != '#/main'){
+        return;
+      }
+      getActivities(); 
+      activity.load().then(prepare, prepare); 
+    }, 10000);
+  });
 
   function getUnansweredCount(activities) {
     return _(activities).reduce(function (memo, activity) {
@@ -70,7 +86,7 @@ angular.module('app.controllers').controller('home', function ($scope, topBar, s
   getActivities();
 
   if (!homeCtrlParams.loaded) {
-    $scope.loading = true;
+    //$scope.loading = true;
     activity.load().then(function () {
       prepare();
       $scope.$emit('home.activities-reloaded');
