@@ -1,7 +1,7 @@
 <article class="item">
 
   <figure ng-click="navigateTo('owner-profile', activity.get('owner'));$event.stopPropagation();">
-    <img bo-show="avatar_file_path" bo-src="avatar_file_path">
+    <img bo-show="avatar_file_path" bo-src="$root.imgcrop(avatar_file_path,33,33)">
     <span ng-show="activity.isInPriorityZone()"></span>
   </figure>
 
@@ -13,7 +13,7 @@
     <i class="time"><time>{{ sent_at_elapsed }}</time></i>
   </div>
   <div class="item-content" ng-click="navigateToActivity(activity)">
-    <p bo-if="activity.get('image_src')" class="picture"><img bo-src="activity.get('image_src')"/></p>
+    <p bo-if="activity.get('image_src')" class="picture"><img bo-src="$root.imgcrop(activity.get('image_src'),300,300)"/></p>
     <p ng-class="{unanswered: activity.isUnanswered()}" bo-if="title" bo-bind="title"></p>
     <p ng-class="{unanswered: activity.isUnanswered() && !title}" bo-bind="description"></p>
   </div>
